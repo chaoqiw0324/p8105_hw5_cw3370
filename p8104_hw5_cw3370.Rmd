@@ -78,7 +78,7 @@ prop_baltmore %>%
   
 ```
 
-```{r}
+```{r eval=FALSE}
 prop_test_function <- function(city_df){
   prop_city <- 
     city_df %>% 
@@ -158,30 +158,27 @@ participant_df %>%
 
 # Problem 3
 ```{r}
-library(tidyverse)
-
 set.seed(10)
-
 iris_with_missing = iris %>% 
   map_df(~replace(.x, sample(1:150, 20), NA)) %>%
   mutate(Species = as.character(Species))
 ```
 
 ```{r}
-replace_cell_function <- function(cell){
-  if(is.na(cell)){
-    cell = replace_value
-  }
-  return(cell)
-}
 
-replace_function <- function(vector){
+
+replace_value_function <- function(vector){
     if(is.numeric(vector)){
-      replace_value = mean(vector,rm.na=TRUE)
+      replace_value = mean(vector,na.rm=TRUE)
     }else if(is.character(vector)){
       replace_value = "virginica"
     }
-  return(replace_value)
+  replace_na(vector,replace_value)
 }
+
+iris_replaced_df <- 
+  iris_with_missing %>% 
+  map_df(replace_value_function)
+
 ```
 
