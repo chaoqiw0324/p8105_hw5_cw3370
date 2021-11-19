@@ -3,7 +3,7 @@ title: "p8105_hw5_cw3370.Rmd"
 output: github_document
 ---
 
-```{r setup, message = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
@@ -206,12 +206,14 @@ participant_df <-
   
 participant_df %>% 
   head(16) %>% 
-  knitr::kable("rst",align = "cccc")
+  knitr::kable(align = "cccc")
 ```
 
 <font size = 4 face="Times New Roman"> The table above is part of the result of tidying</font>
 
 <font size = 5>Make a spaghetti plot showing observations on each subject over time, and comment on differences between groups.</font>
+
+<font size = 4 face="Times New Roman"> From the spaghetti, we can find that the value in experiment group is relatively larger than the value in control group. Besides that, we can find the value in control group maintained in a  level while the value in experiment group shows a rising trend over time.</font>
 
 ```{r}
 participant_df %>% 
@@ -220,6 +222,7 @@ participant_df %>%
   geom_line()+
   facet_grid(.~control_arm)
 ```
+
 
 # Problem 3
 ```{r}
@@ -252,7 +255,7 @@ iris_replaced_df <-
 ```
 
 <font size = 4 face="Times New Roman">
-Some Test
+Some Proof
 
 From two table below, we can find that the NA value has been replaced.
 
